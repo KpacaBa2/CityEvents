@@ -1,0 +1,20 @@
+{% load i18n %}
+{% load core_extras %}
+<li><a class="{% active_class '/' %}" href="{% url 'pages:home' %}">{% trans "Главная" %}</a></li>
+<li><a class="{% active_class '/events/' %}" href="{% url 'events:list' %}">{% trans "События" %}</a></li>
+<li><a href="#">{% trans "Разделы" %} <i class="ti-angle-down"></i></a>
+    <ul class="submenu">
+        <li><a href="{% url 'categories:list' %}">{% trans "Категории" %}</a></li>
+        <li><a href="{% url 'venues:list' %}">{% trans "Площадки" %}</a></li>
+        <li><a href="{% url 'organizers:list' %}">{% trans "Организаторы" %}</a></li>
+        <li><a href="{% url 'tags:list' %}">{% trans "Теги" %}</a></li>
+    </ul>
+</li>
+<li><a href="#">{% trans "Страницы" %} <i class="ti-angle-down"></i></a>
+    <ul class="submenu">
+        <li><a href="{% url 'pages:about' %}">{% trans "О проекте" %}</a></li>
+        <li><a href="{% url 'pages:stats' %}">{% trans "Статистика" %}</a></li>
+        <li><a href="{% url 'pages:faq' %}">{% trans "FAQ" %}</a></li>
+    </ul>
+</li>
+<li><a class="{% active_class '/contact/' %}" href="{% url 'pages:contact' %}">{% trans "Контакты" %}</a></li>

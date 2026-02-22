@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{% static 'vendor/template-606/css/animate.min.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/template-606/css/slicknav.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/template-606/css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/app.css' %}?v=20260222-4">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}?v=20260222-6">
     {% block styles %}{% endblock %}
 </head>
 <body>
@@ -46,25 +46,7 @@
                                 <div class="main-menu d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a class="{% active_class '/' %}" href="{% url 'pages:home' %}">{% trans "Главная" %}</a></li>
-                                            <li><a class="{% active_class '/events/' %}" href="{% url 'events:list' %}">{% trans "События" %}</a></li>
-                                            <li><a href="#">{% trans "Разделы" %} <i class="ti-angle-down"></i></a>
-                                                <ul class="submenu">
-                                                    <li><a href="{% url 'categories:list' %}">{% trans "Категории" %}</a></li>
-                                                    <li><a href="{% url 'venues:list' %}">{% trans "Площадки" %}</a></li>
-                                                    <li><a href="{% url 'organizers:list' %}">{% trans "Организаторы" %}</a></li>
-                                                    <li><a href="{% url 'tags:list' %}">{% trans "Теги" %}</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">{% trans "Страницы" %} <i class="ti-angle-down"></i></a>
-                                                <ul class="submenu">
-                                                    <li><a href="{% url 'pages:about' %}">{% trans "О проекте" %}</a></li>
-                                                    <li><a href="{% url 'pages:stats' %}">{% trans "Статистика" %}</a></li>
-                                                    <li><a href="{% url 'pages:faq' %}">{% trans "FAQ" %}</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a class="{% active_class '/contact/' %}" href="{% url 'pages:contact' %}">{% trans "Контакты" %}</a></li>
-                                            {# Mobile actions moved below hamburger to avoid duplicates #}
+                                            {% include 'partials/nav_links.html' %}
                                         </ul>
                                     </nav>
                                 </div>
@@ -96,7 +78,19 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <div class="mobile_menu d-block d-lg-none"></div>
+                                <div class="mobile_menu d-block d-lg-none">
+                                    <button class="mobile-toggle" type="button" data-mobile-toggle aria-expanded="false" aria-controls="mobileNav">
+                                        <span class="bar"></span>
+                                        <span class="bar"></span>
+                                        <span class="bar"></span>
+                                        <span class="sr-only">{% trans "Меню" %}</span>
+                                    </button>
+                                    <nav id="mobileNav" class="mobile-drawer" aria-hidden="true">
+                                        <ul class="mobile-nav">
+                                            {% include 'partials/nav_links.html' %}
+                                        </ul>
+                                    </nav>
+                                </div>
                                 <div class="mobile-actions d-flex d-lg-none">
                                     {% if request.user.is_authenticated %}
                                         <a class="mobile-link" href="{% url 'users:profile' %}">{% trans "Профиль" %}</a>
@@ -249,7 +243,7 @@
     <script src="{% static 'vendor/template-606/js/jquery.validate.min.js' %}"></script>
     <script src="{% static 'vendor/template-606/js/mail-script.js' %}"></script>
     <script src="{% static 'vendor/template-606/js/main.js' %}"></script>
-    <script src="{% static 'js/app.js' %}?v=20260217-4"></script>
+    <script src="{% static 'js/app.js' %}?v=20260222-2"></script>
     {% block scripts %}{% endblock %}
 </body>
 </html>

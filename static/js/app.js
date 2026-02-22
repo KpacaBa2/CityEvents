@@ -7,7 +7,7 @@
     });
 
     // 2) Theme toggle with localStorage
-    const themeToggle = doc.querySelector('[data-theme-toggle]');
+    const themeToggles = doc.querySelectorAll('[data-theme-toggle]');
     const applyTheme = (theme) => {
         if (theme === 'dark') {
             doc.documentElement.setAttribute('data-theme', 'dark');
@@ -18,10 +18,46 @@
     };
     const savedTheme = localStorage.getItem('theme');
     applyTheme(savedTheme === 'dark' ? 'dark' : 'light');
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const isDark = doc.documentElement.getAttribute('data-theme') === 'dark';
-            applyTheme(isDark ? 'light' : 'dark');
+    if (themeToggles.length) {
+        themeToggles.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const isDark = doc.documentElement.getAttribute('data-theme') === 'dark';
+                applyTheme(isDark ? 'light' : 'dark');
+            });
+        });
+    }
+
+    // 2.5) Mobile menu toggle
+    const mobileToggle = doc.querySelector('[data-mobile-toggle]');
+    const mobileDrawer = doc.getElementById('mobileNav');
+    const setMobileOpen = (open) => {
+        if (!mobileToggle || !mobileDrawer) return;
+        mobileDrawer.classList.toggle('is-open', open);
+        mobileDrawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+        mobileToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    if (mobileToggle && mobileDrawer) {
+        mobileToggle.addEventListener('click', () => {
+            const isOpen = mobileDrawer.classList.contains('is-open');
+            setMobileOpen(!isOpen);
+        });
+
+        mobileDrawer.querySelectorAll('li').forEach((li) => {
+            const submenu = li.querySelector('ul');
+            const link = li.querySelector('a');
+            if (submenu && link && link.getAttribute('href') === '#') {
+                li.classList.add('has-submenu');
+                link.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    li.classList.toggle('is-open');
+                });
+            }
+        });
+
+        mobileDrawer.querySelectorAll('a').forEach((link) => {
+            if (link.getAttribute('href') && link.getAttribute('href') !== '#') {
+                link.addEventListener('click', () => setMobileOpen(false));
+            }
         });
     }
 

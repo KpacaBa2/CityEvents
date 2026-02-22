@@ -19,7 +19,7 @@
                 {{ profile_form.as_p }}
                 <button class="boxed-btn3 w-100" type="submit">{% trans "Сохранить" %}</button>
             </form>
-            <div class="mt-4">
+            <div class="profile-links mt-4">
                 <a href="{% url 'tickets:my' %}">{% trans "Мои билеты" %}</a> ·
                 <a href="{% url 'orders:my' %}">{% trans "Мои заказы" %}</a> ·
                 <a href="{% url 'favorites:list' %}">{% trans "Избранное" %}</a>

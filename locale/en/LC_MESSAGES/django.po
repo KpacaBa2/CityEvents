@@ -1016,5 +1016,8 @@ msgstr "Next"
 msgid "После регистрации потребуется подтверждение email. Проверьте почту."
 msgstr "After registration, email confirmation is required. Check your inbox."
 
+msgid "Меню"
+msgstr "Menu"
+
 #~ msgid "Регистрация успешна. Добро пожаловать!"
 #~ msgstr "Registration successful. Welcome!"
