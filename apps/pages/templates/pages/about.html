@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "О проекте — CityEvents" %}{% endblock %}
+
+{% block content %}
+{% trans "О проекте" as brad_title %}
+{% trans "Главная / О проекте" as brad_subtitle %}
+{% include 'partials/bradcam.html' with title=brad_title subtitle=brad_subtitle %}
+
+<section class="section_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h2>CityEvents</h2>
+                <p>{% trans "CityEvents — командный проект: городская афиша с расписанием, билетами и подборками." %}</p>
+                <p>{% trans "Мы собираем лучшие события города, помогаем организаторам и делаем поиск быстрым." %}</p>
+            </div>
+            <div class="col-lg-4">
+                <div class="job_sumary">
+                    <div class="summery_header">
+                        <h3>{% trans "Команда" %}</h3>
+                    </div>
+                    <div class="job_content">
+                        <ul>
+                            <li>{% trans "Backend" %}: <span>Байдалин Рамиз</span></li>
+                            <li>{% trans "Frontend" %}: <span>Байдалин Рамиз</span></li>
+                            <li>{% trans "DevOps" %}: <span>Байдалин Рамиз</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

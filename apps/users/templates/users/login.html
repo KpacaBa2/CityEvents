@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Вход — CityEvents" %}{% endblock %}
+
+{% block content %}
+{% trans "Вход" as brad_title %}
+{% trans "Главная / Вход" as brad_subtitle %}
+{% include 'partials/bradcam.html' with title=brad_title subtitle=brad_subtitle %}
+
+<section class="section_padding form-section">
+    <div class="container">
+        <div class="apply_job_form white-bg">
+            <h4>{% trans "Войти в аккаунт" %}</h4>
+            <form method="post">
+                {% csrf_token %}
+                {% if next %}
+                    <input type="hidden" name="next" value="{{ next }}">
+                {% endif %}
+                {{ form.as_p }}
+                <button class="boxed-btn3-line w-100" type="button" data-toggle-password="id_password">{% trans "Показать/скрыть пароль" %}</button>
+                <button class="boxed-btn3 w-100" type="submit">{% trans "Войти" %}</button>
+            </form>
+            <p class="mt-3"><a href="{% url 'users:password_reset' %}">{% trans "Забыли пароль?" %}</a></p>
+        </div>
+    </div>
+</section>
+{% endblock %}

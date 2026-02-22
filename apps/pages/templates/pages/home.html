@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "CityEvents — афиша города" %}{% endblock %}
+
+{% block content %}
+<div class="slider_area">
+    <div class="single_slider d-flex align-items-center slider_bg_1">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7 col-md-6">
+                    <div class="slider_text">
+                        <h5 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".2s">{% trans "Городская афиша" %}</h5>
+                        <h3 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".3s">CityEvents</h3>
+                        <p class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".4s">{% trans "Находите лучшие события, площадки и организаторов в одном месте." %}</p>
+                        <div class="sldier_btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".5s">
+                            <a href="{% url 'events:list' %}" class="boxed-btn3">{% trans "Смотреть события" %}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ilstration_img wow fadeInRight d-none d-lg-block text-right" data-wow-duration="1s" data-wow-delay=".2s">
+        <img src="{% static 'vendor/template-606/img/banner/illustration.png' %}" alt="CityEvents">
+    </div>
+</div>
+
+<div class="catagory_area">
+    <div class="container">
+        <form class="row cat_search" method="get" action="{% url 'events:list' %}">
+            <div class="col-lg-3 col-md-4">
+                <div class="single_input">
+                    <input type="text" name="q" placeholder="{% trans 'Поиск события' %}">
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4">
+                <div class="single_input">
+                    <input type="text" name="city" placeholder="{% trans 'Город (slug)' %}">
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4">
+                <div class="single_input">
+                    <input type="text" name="category" placeholder="{% trans 'Категория (slug)' %}">
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-12">
+                <div class="job_btn">
+                    <button type="submit" class="boxed-btn3">{% trans "Найти" %}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="job_listing_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section_title">
+                    <h3>{% trans "Ближайшие события" %}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="job_lists">
+            <div class="row">
+                {% for event in events %}
+                    <div class="col-lg-12 col-md-12">
+                        {% include 'partials/event_card.html' %}
+                    </div>
+                {% empty %}
+                    <div class="col-lg-12">
+                        <div class="notice-block">{% trans "Пока событий нет." %}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="job_searcing_wrap overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-5 offset-xl-1 col-md-6">
+                <div class="searching_text">
+                    <h3>{% trans "Организаторам" %}</h3>
+                    <p>{% trans "Добавляйте события и находите свою аудиторию." %}</p>
+                    <a href="{% url 'events:create' %}" class="boxed-btn3">{% trans "Создать событие" %}</a>
+                </div>
+            </div>
+            <div class="col-xl-5 col-md-6">
+                <div class="searching_text">
+                    <h3>{% trans "Посетителям" %}</h3>
+                    <p>{% trans "Сохраняйте избранное и следите за обновлениями." %}</p>
+                    <a href="{% url 'favorites:list' %}" class="boxed-btn3">{% trans "Избранное" %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

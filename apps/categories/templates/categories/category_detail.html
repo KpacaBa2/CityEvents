@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ category.name }} — CityEvents{% endblock %}
+
+{% block content %}
+{% trans "Главная / Категории / Детали" as brad_subtitle %}
+{% include 'partials/bradcam.html' with title=category.name subtitle=brad_subtitle %}
+
+<section class="section_padding">
+    <div class="container">
+        <div class="row">
+            {% for event in events %}
+                <div class="col-lg-12">
+                    {% include 'partials/event_card.html' %}
+                </div>
+            {% empty %}
+                <div class="col-lg-12"><div class="notice-block">{% trans "Событий нет." %}</div></div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Отзыв — CityEvents" %}{% endblock %}
+
+{% block content %}
+{% trans "Оставить отзыв" as brad_title %}
+{% trans "Главная / Отзывы" as brad_subtitle %}
+{% include 'partials/bradcam.html' with title=brad_title subtitle=brad_subtitle %}
+
+<section class="section_padding form-section">
+    <div class="container">
+        <div class="apply_job_form white-bg">
+            <h4>{% trans "Отзыв" %}: {{ event.title }}</h4>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.rating.label_tag }}
+                    {{ form.rating }}
+                    {% for error in form.rating.errors %}
+                        <div class="form-error">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    {{ form.comment.label_tag }}
+                    {{ form.comment }}
+                    <small>{% trans "Символов" %}: <span id="reviewCounter">0</span></small>
+                    {% for error in form.comment.errors %}
+                        <div class="form-error">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                <button class="boxed-btn3 w-100" type="submit">{% trans "Сохранить" %}</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

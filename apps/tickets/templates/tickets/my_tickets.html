@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Мои билеты — CityEvents" %}{% endblock %}
+
+{% block content %}
+{% trans "Мои билеты" as brad_title %}
+{% trans "Главная / Билеты" as brad_subtitle %}
+{% include 'partials/bradcam.html' with title=brad_title subtitle=brad_subtitle %}
+
+<section class="section_padding">
+    <div class="container">
+        <div class="row">
+            {% for ticket in tickets %}
+                <div class="col-lg-12">
+                    <div class="single_jobs white-bg">
+                        <div class="jobs_conetent">
+                            <h4>{{ ticket.ticket_type.event.title }}</h4>
+                            <p>{{ ticket.ticket_type.name }} — {{ ticket.status }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-lg-12"><div class="notice-block">{% trans "Билетов нет." %}</div></div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

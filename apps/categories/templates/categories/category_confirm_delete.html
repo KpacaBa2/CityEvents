@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Удалить категорию — CityEvents" %}{% endblock %}
+
+{% block content %}
+<section class="section">
+    <h1>{% trans "Удалить категорию" %}</h1>
+    <p>{% trans "Вы уверены?" %}</p>
+    <form method="post">
+        {% csrf_token %}
+        <button class="btn btn-danger" type="submit">{% trans "Удалить" %}</button>
+        <a class="btn btn-ghost" href="{% url 'categories:list' %}">{% trans "Отмена" %}</a>
+    </form>
+</section>
+{% endblock %}

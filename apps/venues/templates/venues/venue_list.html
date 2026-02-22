@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Площадки — CityEvents" %}{% endblock %}
+
+{% block content %}
+{% trans "Площадки" as brad_title %}
+{% trans "Главная / Площадки" as brad_subtitle %}
+{% include 'partials/bradcam.html' with title=brad_title subtitle=brad_subtitle %}
+
+<section class="section_padding">
+    <div class="container">
+        <div class="row">
+            {% for venue in page_obj.object_list %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_jobs white-bg">
+                        <div class="jobs_conetent">
+                            <a href="{% url 'venues:detail' slug=venue.slug %}"><h4>{{ venue.name }}</h4></a>
+                            <p><i class="fa fa-map-marker"></i> {{ venue.city.name }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-lg-12"><div class="notice-block">{% trans "Площадок нет." %}</div></div>
+            {% endfor %}
+        </div>
+        {% include 'partials/pagination.html' %}
+    </div>
+</section>
+{% endblock %}

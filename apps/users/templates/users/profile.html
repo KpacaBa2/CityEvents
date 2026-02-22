@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Профиль — CityEvents" %}{% endblock %}
+
+{% block content %}
+{% trans "Профиль" as brad_title %}
+{% trans "Главная / Профиль" as brad_subtitle %}
+{% include 'partials/bradcam.html' with title=brad_title subtitle=brad_subtitle %}
+
+<section class="section_padding form-section">
+    <div class="container">
+        <div class="apply_job_form white-bg">
+            <h4>{% trans "Мой профиль" %}</h4>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <p><strong>{% trans "Роль" %}:</strong> {{ profile.get_role_display }}</p>
+                {{ user_form.as_p }}
+                {{ profile_form.as_p }}
+                <button class="boxed-btn3 w-100" type="submit">{% trans "Сохранить" %}</button>
+            </form>
+            <div class="mt-4">
+                <a href="{% url 'tickets:my' %}">{% trans "Мои билеты" %}</a> ·
+                <a href="{% url 'orders:my' %}">{% trans "Мои заказы" %}</a> ·
+                <a href="{% url 'favorites:list' %}">{% trans "Избранное" %}</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

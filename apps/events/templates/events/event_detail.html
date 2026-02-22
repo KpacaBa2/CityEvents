@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load core_extras %}
+{% load i18n %}
+
+{% block title %}{{ event.title }} — CityEvents{% endblock %}
+
+{% block content %}
+{% trans "Главная / События / Детали" as brad_subtitle %}
+{% trans "Без комментария" as default_comment %}
+{% include 'partials/bradcam.html' with title=event.title subtitle=brad_subtitle %}
+
+<div class="job_details_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="job_details_header">
+                    <div class="single_jobs white-bg d-flex justify-content-between">
+                        <div class="jobs_left d-flex align-items-center">
+                            <div class="thumb">
+                                    {% if event.cover %}
+                                        <img src="{{ event.cover.url }}" alt="{{ event.title }}">
+                                    {% else %}
+                                        <img src="{% static 'vendor/template-606/img/svg_icon/1.svg' %}" alt="{% trans 'Событие' %}">
+                                    {% endif %}
+                                </div>
+                            <div class="jobs_conetent">
+                                <h4>{{ event.title }}</h4>
+                                <div class="links_locat d-flex align-items-center">
+                                    <div class="location">
+                                        <p><i class="fa fa-map-marker"></i> {{ event.venue.name }}</p>
+                                    </div>
+                                    <div class="location">
+                                        <p><i class="fa fa-clock-o"></i> {{ event.start_at|date:"d.m.Y H:i" }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="jobs_right">
+                            <div class="apply_now">
+                                <form class="inline-form" method="post" action="{% url 'favorites:toggle' slug=event.slug %}">
+                                    {% csrf_token %}
+                                    <button class="heart_mark" type="submit" aria-label="{% trans 'Добавить в избранное' %}">
+                                        <i class="ti-heart"></i>
+                                    </button>
+                                </form>
+                                {% if can_manage %}
+                                    <a href="{% url 'events:edit' slug=event.slug %}" class="boxed-btn3-line">{% trans "Редактировать" %}</a>
+                                    <a href="{% url 'events:delete' slug=event.slug %}" class="boxed-btn3-line">{% trans "Удалить" %}</a>
+                                {% endif %}
+                                {% if request.user.is_authenticated %}
+                                    <a href="{% url 'reviews:add' slug=event.slug %}" class="boxed-btn3">{% trans "Оставить отзыв" %}</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="descript_wrap white-bg">
+                    <div class="single_wrap">
+                        <h4>{% trans "Описание" %}</h4>
+                        <p>{{ event.description }}</p>
+                    </div>
+                    <div class="single_wrap">
+                        <h4>{% trans "Категории" %}</h4>
+                        <ul>
+                            {% for category in event.categories.all %}
+                                <li>{{ category.name }}</li>
+                            {% empty %}
+                                <li>{% trans "Категории не указаны" %}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="single_wrap">
+                        <h4>{% trans "Теги" %}</h4>
+                        <ul>
+                            {% for tag in event.tags.all %}
+                                <li>{{ tag.name }}</li>
+                            {% empty %}
+                                <li>{% trans "Теги не указаны" %}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="job_listing_area">
+                    <div class="section_title">
+                        <h3>{% trans "Отзывы" %}</h3>
+                    </div>
+                    <div class="job_lists">
+                        {% for review in event.reviews.all %}
+                            <div class="single_jobs white-bg">
+                                <div class="jobs_conetent">
+                                    <h4>{{ review.user.username }} — {{ review.rating|stars }}</h4>
+                                    <p>{{ review.comment|default:default_comment }}</p>
+                                </div>
+                            </div>
+                        {% empty %}
+                            <div class="notice-block">{% trans "Отзывов пока нет." %}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="job_sumary">
+                    <div class="summery_header">
+                        <h3>{% trans "Информация" %}</h3>
+                    </div>
+                    <div class="job_content">
+                        <ul>
+                            <li>{% trans "Организатор" %}: <span>{{ event.organizer.name }}</span></li>
+                            <li>{% trans "Дата начала" %}: <span>{{ event.start_at|date:"d.m.Y H:i" }}</span></li>
+                            <li>{% trans "Дата окончания" %}: <span>{{ event.end_at|date:"d.m.Y H:i" }}</span></li>
+                            <li>{% trans "Цена от" %}: <span>{{ event.price_from }} ₸</span></li>
+                            <li>
+                                {% trans "Рейтинг" %}:
+                                <span>
+                                    {% if event.reviews_count %}
+                                        {{ event.avg_rating|floatformat:1 }} ({{ event.reviews_count }})
+                                    {% else %}
+                                        {% trans "Нет отзывов" %}
+                                    {% endif %}
+                                </span>
+                            </li>
+                            <li>{% trans "Статус" %}: <span>{{ event.get_status_display }}</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

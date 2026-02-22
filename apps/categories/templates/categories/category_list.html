@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Категории — CityEvents" %}{% endblock %}
+
+{% block content %}
+{% trans "Категории" as brad_title %}
+{% trans "Главная / Категории" as brad_subtitle %}
+{% trans "Описание отсутствует" as empty_desc %}
+{% include 'partials/bradcam.html' with title=brad_title subtitle=brad_subtitle %}
+
+<section class="section_padding">
+    <div class="container">
+        <div class="row">
+            {% for category in page_obj.object_list %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_jobs white-bg">
+                        <div class="jobs_conetent">
+                            <a href="{% url 'categories:detail' slug=category.slug %}"><h4>{{ category.name }}</h4></a>
+                            <p>{{ category.description|default:empty_desc }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-lg-12"><div class="notice-block">{% trans "Категорий нет." %}</div></div>
+            {% endfor %}
+        </div>
+        {% include 'partials/pagination.html' %}
+    </div>
+</section>
+{% endblock %}

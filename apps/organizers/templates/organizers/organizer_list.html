@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Организаторы — CityEvents" %}{% endblock %}
+
+{% block content %}
+{% trans "Организаторы" as brad_title %}
+{% trans "Главная / Организаторы" as brad_subtitle %}
+{% include 'partials/bradcam.html' with title=brad_title subtitle=brad_subtitle %}
+
+<section class="section_padding">
+    <div class="container">
+        <div class="row">
+            {% for organizer in page_obj.object_list %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_jobs white-bg">
+                        <div class="jobs_conetent">
+                            <a href="{% url 'organizers:detail' slug=organizer.slug %}"><h4>{{ organizer.name }}</h4></a>
+                            <p>{{ organizer.contact_email|default:'Email не указан' }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-lg-12"><div class="notice-block">{% trans "Организаторов нет." %}</div></div>
+            {% endfor %}
+        </div>
+        {% include 'partials/pagination.html' %}
+    </div>
+</section>
+{% endblock %}

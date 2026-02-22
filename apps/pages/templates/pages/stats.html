@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Статистика — CityEvents" %}{% endblock %}
+
+{% block content %}
+{% trans "Статистика" as brad_title %}
+{% trans "Главная / Статистика" as brad_subtitle %}
+{% include 'partials/bradcam.html' with title=brad_title subtitle=brad_subtitle %}
+
+<section class="section_padding">
+    <div class="container">
+        <div class="tab-switcher mb-4">
+            <div class="tabs mb-2">
+                <button class="boxed-btn3-line" type="button" data-tab-trigger="categories">{% trans "Категории" %}</button>
+                <button class="boxed-btn3-line" type="button" data-tab-trigger="venues">{% trans "Площадки" %}</button>
+            </div>
+            <div class="tab-panel is-active" data-tab-panel="categories">
+                {% trans "Всего категорий" %}: <strong>{{ categories|length }}</strong>
+            </div>
+            <div class="tab-panel" data-tab-panel="venues">
+                {% trans "Всего площадок" %}: <strong>{{ venues|length }}</strong>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="job_sumary">
+                    <div class="summery_header">
+                        <h3>{% trans "События по категориям" %}</h3>
+                    </div>
+                    <div class="job_content">
+                        <ul>
+                            {% for category in categories %}
+                                <li>{{ category.name }}: <span>{{ category.event_count }}</span></li>
+                            {% empty %}
+                                <li>{% trans "Нет данных" %}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="job_sumary">
+                    <div class="summery_header">
+                        <h3>{% trans "События по площадкам" %}</h3>
+                    </div>
+                    <div class="job_content">
+                        <ul>
+                            {% for venue in venues %}
+                                <li>{{ venue.name }}: <span>{{ venue.event_count }}</span></li>
+                            {% empty %}
+                                <li>{% trans "Нет данных" %}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

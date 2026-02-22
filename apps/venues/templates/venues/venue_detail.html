@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ venue.name }} — CityEvents{% endblock %}
+
+{% block content %}
+{% trans "Главная / Площадки / Детали" as brad_subtitle %}
+{% include 'partials/bradcam.html' with title=venue.name subtitle=brad_subtitle %}
+
+<section class="section_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="single_wrap">
+                    <h4>{% trans "Описание" %}</h4>
+                    {% trans "Описание отсутствует" as empty_desc %}
+                    <p>{{ venue.description|default:empty_desc }}</p>
+                </div>
+                <div class="single_wrap">
+                    <h4>{% trans "События площадки" %}</h4>
+                    {% for event in events %}
+                        {% include 'partials/event_card.html' %}
+                    {% empty %}
+                        <div class="notice-block">{% trans "Пока нет событий." %}</div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="job_sumary">
+                    <div class="summery_header">
+                        <h3>{% trans "Информация" %}</h3>
+                    </div>
+                    <div class="job_content">
+                        <ul>
+                            <li>{% trans "Адрес" %}: <span>{{ venue.address }}</span></li>
+                            <li>{% trans "Город" %}: <span>{{ venue.city.name }}</span></li>
+                            <li>{% trans "Вместимость" %}: <span>{{ venue.capacity }}</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

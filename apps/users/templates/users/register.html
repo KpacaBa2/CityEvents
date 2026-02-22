@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Регистрация — CityEvents" %}{% endblock %}
+
+{% block content %}
+{% trans "Регистрация" as brad_title %}
+{% trans "Главная / Регистрация" as brad_subtitle %}
+{% include 'partials/bradcam.html' with title=brad_title subtitle=brad_subtitle %}
+
+<section class="section_padding form-section">
+    <div class="container">
+        <div class="apply_job_form white-bg">
+            <h4>{% trans "Создать аккаунт" %}</h4>
+            <p class="notice-block">{% trans "После регистрации потребуется подтверждение email. Проверьте почту." %}</p>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="boxed-btn3-line w-100" type="button" data-toggle-password="id_password1">{% trans "Показать/скрыть пароль" %}</button>
+                <button class="boxed-btn3-line w-100 mt-2" type="button" data-toggle-password="id_password2">{% trans "Показать/скрыть подтверждение" %}</button>
+                <button class="boxed-btn3 w-100" type="submit">{% trans "Создать" %}</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

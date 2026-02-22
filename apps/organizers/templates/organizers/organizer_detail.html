@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ organizer.name }} — CityEvents{% endblock %}
+
+{% block content %}
+{% trans "Главная / Организаторы / Детали" as brad_subtitle %}
+{% include 'partials/bradcam.html' with title=organizer.name subtitle=brad_subtitle %}
+
+<section class="section_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="single_wrap">
+                    <h4>{% trans "Описание" %}</h4>
+                    {% trans "Описание отсутствует" as empty_desc %}
+                    <p>{{ organizer.description|default:empty_desc }}</p>
+                </div>
+                <div class="single_wrap">
+                    <h4>{% trans "События организатора" %}</h4>
+                    {% for event in events %}
+                        {% include 'partials/event_card.html' %}
+                    {% empty %}
+                        <div class="notice-block">{% trans "Нет событий." %}</div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="job_sumary">
+                    <div class="summery_header">
+                        <h3>{% trans "Контакты" %}</h3>
+                    </div>
+                    <div class="job_content">
+                        <ul>
+                            <li>{% trans "Email" %}: <span>{{ organizer.contact_email|default:'—' }}</span></li>
+                            <li>{% trans "Телефон" %}: <span>{{ organizer.phone|default:'—' }}</span></li>
+                            <li>{% trans "Сайт" %}: <span>{{ organizer.website|default:'—' }}</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

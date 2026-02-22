@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "FAQ — CityEvents" %}{% endblock %}
+
+{% block content %}
+{% trans "FAQ" as brad_title %}
+{% trans "Главная / FAQ" as brad_subtitle %}
+{% include 'partials/bradcam.html' with title=brad_title subtitle=brad_subtitle %}
+
+<section class="section_padding">
+    <div class="container">
+        <div class="accordion">
+            <div class="accordion-item">
+                <button class="accordion-trigger">{% trans "Как купить билет?" %}</button>
+                <div class="accordion-panel">{% trans "Выберите событие и оформите заказ." %}</div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-trigger">{% trans "Как стать организатором?" %}</button>
+                <div class="accordion-panel">{% trans "Зарегистрируйтесь и заполните профиль." %}</div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
