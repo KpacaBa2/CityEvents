@@ -1,0 +1,20 @@
+__pycache__/
+*.py[cod]
+*.sqlite3
+.env
+.env.*
+.venv/
+venv/
+media/
+staticfiles/
+*.log
+.DS_Store
+
+# Django
+local_settings.py
+
+# Editors
+.vscode/
+.idea/
+
+!.env.example
