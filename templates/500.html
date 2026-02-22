@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Ошибка сервера" %}{% endblock %}
+
+{% block content %}
+{% trans "Ошибка сервера" as brad_subtitle %}
+{% include 'partials/bradcam.html' with title='500' subtitle=brad_subtitle %}
+
+<section class="section_padding">
+    <div class="container">
+        <div class="notice-block">{% trans "Произошла ошибка. Попробуйте позже." %}</div>
+        <a class="boxed-btn3" href="{% url 'pages:home' %}">{% trans "На главную" %}</a>
+    </div>
+</section>
+{% endblock %}

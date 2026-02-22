@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Страница не найдена" %}{% endblock %}
+
+{% block content %}
+{% trans "Страница не найдена" as brad_subtitle %}
+{% include 'partials/bradcam.html' with title='404' subtitle=brad_subtitle %}
+
+<section class="section_padding">
+    <div class="container">
+        <div class="notice-block">{% trans "Страница не найдена. Вернитесь на главную." %}</div>
+        <a class="boxed-btn3" href="{% url 'pages:home' %}">{% trans "На главную" %}</a>
+    </div>
+</section>
+{% endblock %}

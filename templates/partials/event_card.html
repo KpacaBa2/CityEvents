@@ -1,0 +1,48 @@
+{% load static %}
+{% load i18n %}
+<div class="single_jobs white-bg d-flex justify-content-between" data-filter-item>
+    <div class="jobs_left d-flex align-items-center">
+        <div class="thumb">
+            {% if event.cover %}
+                <img src="{{ event.cover.url }}" alt="{{ event.title }}">
+            {% else %}
+                <img src="{% static 'vendor/template-606/img/svg_icon/1.svg' %}" alt="{% trans 'Событие' %}">
+            {% endif %}
+        </div>
+        <div class="jobs_conetent">
+            <a href="{% url 'events:detail' slug=event.slug %}"><h4>{{ event.title }}</h4></a>
+            <div class="links_locat d-flex align-items-center">
+                <div class="location">
+                    <p><i class="fa fa-map-marker"></i> {{ event.venue.city.name|default:'-' }}</p>
+                </div>
+                <div class="location">
+                    <p><i class="fa fa-clock-o"></i> {{ event.start_at|date:"d.m.Y H:i" }}</p>
+                </div>
+                <div class="location">
+                    <p>
+                        <i class="fa fa-star"></i>
+                        {% if event.reviews_count %}
+                            {{ event.avg_rating|floatformat:1 }} ({{ event.reviews_count }})
+                        {% else %}
+                            {% trans "Нет отзывов" %}
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="jobs_right">
+        <div class="apply_now">
+            <form class="inline-form" method="post" action="{% url 'favorites:toggle' slug=event.slug %}">
+                {% csrf_token %}
+                <button class="heart_mark" type="submit" aria-label="{% trans 'Добавить в избранное' %}">
+                    <i class="ti-heart"></i>
+                </button>
+            </form>
+            <a href="{% url 'events:detail' slug=event.slug %}" class="boxed-btn3">{% trans "Подробнее" %}</a>
+        </div>
+        <div class="date">
+            <p>{% trans "От" %} {{ event.price_from }} ₸</p>
+        </div>
+    </div>
+</div>

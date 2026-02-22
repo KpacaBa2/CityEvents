@@ -1,0 +1,528 @@
+.lang-switch {
+    display: inline-flex;
+    gap: 6px;
+    margin-left: 12px;
+}
+
+.lang-btn {
+    border: 1px solid #2c2c2c;
+    background: transparent;
+    color: #2c2c2c;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    line-height: 1.2;
+}
+
+.lang-btn.is-active {
+    background: #00d363;
+    border-color: #00d363;
+    color: #fff;
+}
+
+.theme-btn {
+    margin-left: 10px;
+    background: transparent;
+    border: 1px solid #2c2c2c;
+    color: #2c2c2c;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.mobile-only {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .mobile_menu {
+        position: static;
+        width: 100%;
+        right: auto;
+    }
+
+    .slicknav_menu {
+        margin: 0;
+        background: transparent;
+    }
+
+    .slicknav_menu .slicknav_nav {
+        position: static;
+        width: 100%;
+        margin-top: 8px;
+        border-radius: 8px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    .slicknav_menu .slicknav_btn {
+        margin: 8px 0;
+        float: right;
+        position: static;
+    }
+
+    .header-area .main-header-area .logo {
+        text-align: center;
+    }
+
+    .header-area .main-header-area .logo img {
+        margin: 0 auto;
+        display: block;
+    }
+
+    .header-area .main-header-area.sticky {
+        position: static;
+        transform: none;
+        background: #fff;
+    }
+
+    .mobile-only {
+        display: block;
+    }
+
+    .mobile-lang-item {
+        padding: 8px 20px;
+    }
+
+    .mobile-lang-item .lang-switch {
+        margin-left: 0;
+        display: inline-flex;
+        gap: 6px;
+    }
+}
+
+@media (max-width: 991px) {
+    .mobile-actions {
+        margin-top: 6px;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 10px;
+    }
+
+    .mobile-actions .mobile-link {
+        font-size: 14px;
+        color: #1f1f1f;
+    }
+
+    .mobile-actions .mobile-link:hover {
+        color: #00d363;
+    }
+
+    html[data-theme="dark"] .mobile-actions .mobile-link {
+        color: #e5e5e5;
+    }
+
+    html[data-theme="dark"] .mobile-actions .mobile-link:hover {
+        color: #00d363;
+    }
+
+    .header-area {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: #ffffff;
+    }
+
+    html[data-theme="dark"] .header-area {
+        background: #0b0d11;
+    }
+
+    .header-area .main-header-area {
+        background: transparent;
+    }
+
+    .slicknav_menu .slicknav_icon-bar {
+        background: #1f1f1f !important;
+    }
+
+    html[data-theme="dark"] .slicknav_menu .slicknav_icon-bar {
+        background: #ffffff !important;
+    }
+
+    .slicknav_nav {
+        background: #ffffff;
+    }
+
+    html[data-theme="dark"] .slicknav_nav {
+        background: #0f1318;
+    }
+
+    html[data-theme="dark"] .slicknav_nav a {
+        color: #e5e5e5;
+    }
+
+    html[data-theme="dark"] .slicknav_nav a:hover {
+        color: #00d363;
+    }
+}
+
+@media (max-width: 575px) {
+    .boxed-btn3-line,
+    .lang-btn,
+    .theme-btn {
+        padding: 8px 14px;
+        font-size: 12px;
+        box-sizing: border-box;
+    }
+}
+
+#navigation .is-active {
+    color: #00d363;
+}
+
+.alert {
+    border-radius: 6px;
+}
+
+.breadcrumbs {
+    margin-top: 8px;
+    color: #fff;
+}
+
+.breadcrumbs a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.pagination {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.pagination a,
+.pagination span {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: #f5f5f5;
+}
+
+.inline-form {
+    display: inline-block;
+}
+
+button.heart_mark {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    color: #00d363;
+    font-size: 14px;
+    line-height: 40px;
+    text-align: center;
+    display: inline-block;
+    background: #effdf5;
+    border: none;
+}
+
+button.heart_mark:hover {
+    background: #00d363;
+    color: #fff;
+    cursor: pointer;
+}
+
+.scroll-top {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+    background: #00d363;
+    color: #fff;
+    font-size: 18px;
+    z-index: 1000;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1001;
+}
+
+.modal.is-open {
+    display: flex;
+}
+
+.modal-content {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    width: min(520px, 90vw);
+}
+
+.modal-close {
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    float: right;
+    cursor: pointer;
+}
+
+.focus-ring:focus,
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px dashed #00d363;
+    outline-offset: 2px;
+}
+
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.is-active {
+    display: block;
+}
+
+.form-error {
+    color: #d9534f;
+    margin-bottom: 10px;
+}
+
+.image-placeholder {
+    background: #f5f5f5;
+    padding: 30px;
+    text-align: center;
+}
+
+.notice-block {
+    background: #fff3cd;
+    padding: 12px 16px;
+    border-radius: 6px;
+}
+
+html:not([data-theme="dark"]) body {
+    color: #1f1f1f;
+}
+
+html:not([data-theme="dark"]) .white-bg h1,
+html:not([data-theme="dark"]) .white-bg h2,
+html:not([data-theme="dark"]) .white-bg h3,
+html:not([data-theme="dark"]) .white-bg h4,
+html:not([data-theme="dark"]) .white-bg h5,
+html:not([data-theme="dark"]) .white-bg h6,
+html:not([data-theme="dark"]) .white-bg .jobs_left .jobs_conetent h4,
+html:not([data-theme="dark"]) .white-bg .job_sumary .summery_header h3 {
+    color: #1f1f1f;
+}
+
+html:not([data-theme="dark"]) .white-bg p,
+html:not([data-theme="dark"]) .white-bg li,
+html:not([data-theme="dark"]) .white-bg label,
+html:not([data-theme="dark"]) .white-bg .links_locat .location p,
+html:not([data-theme="dark"]) .white-bg .job_sumary .job_content ul li {
+    color: #5c6670;
+}
+
+html:not([data-theme="dark"]) .white-bg a:not(.boxed-btn3):not(.heart_mark) {
+    color: #1f1f1f;
+}
+
+html:not([data-theme="dark"]) .white-bg a:not(.boxed-btn3):not(.heart_mark):hover {
+    color: #00d363;
+}
+
+html:not([data-theme="dark"]) .slider_area .single_slider .slider_text h5,
+html:not([data-theme="dark"]) .slider_area .single_slider .slider_text h3 {
+    color: #1f1f1f;
+}
+
+html:not([data-theme="dark"]) .slider_area .single_slider .slider_text p {
+    color: #4b5560;
+}
+
+html:not([data-theme="dark"]) .header-area .main-header-area,
+html:not([data-theme="dark"]) .header-area .main-header-area.sticky {
+    background: #ffffff;
+}
+
+html:not([data-theme="dark"]) .header-area .main-header-area .main-menu ul li a,
+html:not([data-theme="dark"]) .header-area .main-header-area .main-menu ul li a i,
+html:not([data-theme="dark"]) .header-area .main-header-area .Appointment .phone_num a {
+    color: #1f1f1f;
+}
+
+html:not([data-theme="dark"]) .header-area .main-header-area .main-menu ul li a:hover {
+    color: #00d363;
+}
+
+html:not([data-theme="dark"]) main h1,
+html:not([data-theme="dark"]) main h2,
+html:not([data-theme="dark"]) main h3,
+html:not([data-theme="dark"]) main h4,
+html:not([data-theme="dark"]) main h5,
+html:not([data-theme="dark"]) main h6 {
+    color: #1f1f1f;
+}
+
+html:not([data-theme="dark"]) main p,
+html:not([data-theme="dark"]) main li,
+html:not([data-theme="dark"]) main label {
+    color: #5c6670;
+}
+
+html:not([data-theme="dark"]) main a:not(.boxed-btn3):not(.boxed-btn4):not(.boxed-btn3-line):not(.heart_mark) {
+    color: #1f1f1f;
+}
+
+html:not([data-theme="dark"]) main a:not(.boxed-btn3):not(.boxed-btn4):not(.boxed-btn3-line):not(.heart_mark):hover {
+    color: #00d363;
+}
+
+html:not([data-theme="dark"]) .bradcam_area {
+    position: relative;
+    background-color: #f5f7fa;
+}
+
+html:not([data-theme="dark"]) .bradcam_area::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.86);
+}
+
+html:not([data-theme="dark"]) .bradcam_area .bradcam_text {
+    position: relative;
+    z-index: 1;
+}
+
+html:not([data-theme="dark"]) .bradcam_area h3 {
+    color: #1f1f1f;
+}
+
+html:not([data-theme="dark"]) .bradcam_area p,
+html:not([data-theme="dark"]) .bradcam_area a {
+    color: #5c6670;
+}
+
+html:not([data-theme="dark"]) .job_searcing_wrap h3,
+html:not([data-theme="dark"]) .job_searcing_wrap p {
+    color: #fff;
+}
+.form-section p {
+    margin-bottom: 12px;
+}
+
+.form-section input,
+.form-section select,
+.form-section textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+html[data-theme="dark"] body {
+    background: #0f1115;
+    color: #e5e5e5;
+}
+
+html[data-theme="dark"] .lang-btn,
+html[data-theme="dark"] .theme-btn {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+html[data-theme="dark"] .white-bg {
+    background: #1c1f26;
+}
+
+html[data-theme="dark"] .header-area,
+html[data-theme="dark"] .footer {
+    background: #0b0d11;
+}
+
+html[data-theme="dark"] .footer p,
+html[data-theme="dark"] .footer a {
+    color: #c7c7c7;
+}
+
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,
+html[data-theme="dark"] h5,
+html[data-theme="dark"] h6 {
+    color: #f5f7fa;
+}
+
+html[data-theme="dark"] p,
+html[data-theme="dark"] li,
+html[data-theme="dark"] label,
+html[data-theme="dark"] .job_listing_area .job_lists .single_jobs .jobs_left .jobs_conetent .links_locat .location p,
+html[data-theme="dark"] .job_listing_area .job_lists .single_jobs .jobs_right .date p,
+html[data-theme="dark"] .job_details_area .single_jobs .jobs_left .jobs_conetent .links_locat .location p {
+    color: #b9c0c7;
+}
+
+html[data-theme="dark"] .job_listing_area,
+html[data-theme="dark"] .job_details_area,
+html[data-theme="dark"] .catagory_area,
+html[data-theme="dark"] .section_padding,
+html[data-theme="dark"] .contact-section,
+html[data-theme="dark"] .about_area,
+html[data-theme="dark"] .service_area,
+html[data-theme="dark"] .team_area,
+html[data-theme="dark"] .blog_area {
+    background: #12161c;
+}
+
+html[data-theme="dark"] .job_listing_area .job_lists .single_jobs,
+html[data-theme="dark"] .job_details_area .single_jobs,
+html[data-theme="dark"] .apply_job_form,
+html[data-theme="dark"] .job_sumary,
+html[data-theme="dark"] .job_filter,
+html[data-theme="dark"] .notice-block,
+html[data-theme="dark"] .image-placeholder,
+html[data-theme="dark"] .white-bg {
+    background: #1c1f26;
+    border-color: #2a2f38;
+}
+
+html[data-theme="dark"] input,
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] select,
+html[data-theme="dark"] .nice-select {
+    background: #0f1318;
+    color: #e5e5e5;
+    border-color: #2a2f38;
+}
+
+html[data-theme="dark"] .nice-select .list {
+    background: #0f1318;
+}
+
+html[data-theme="dark"] .nice-select .option {
+    color: #e5e5e5;
+}
+
+html[data-theme="dark"] main a:not(.boxed-btn3):not(.boxed-btn4):not(.boxed-btn3-line):not(.heart_mark) {
+    color: #e5e5e5;
+}
+
+html[data-theme="dark"] main a:not(.boxed-btn3):not(.boxed-btn4):not(.boxed-btn3-line):not(.heart_mark):hover {
+    color: #00d363;
+}
+
+html[data-theme="dark"] .apply_job_form a:not(.boxed-btn3):not(.boxed-btn4):not(.boxed-btn3-line):not(.heart_mark) {
+    color: #e5e5e5;
+}
+
+html[data-theme="dark"] .apply_job_form a:not(.boxed-btn3):not(.boxed-btn4):not(.boxed-btn3-line):not(.heart_mark):hover {
+    color: #00d363;
+}
+.logo img,
+.footer_logo img {
+    height: 40px;
+    width: auto;
+}
