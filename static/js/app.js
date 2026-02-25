@@ -171,4 +171,21 @@
             }
         });
     });
+
+    // 16) DateTime picker for event form
+    if (window.jQuery && window.jQuery.fn && window.jQuery.fn.datetimepicker) {
+        const $ = window.jQuery;
+        $('.js-datetime').each(function () {
+            const $input = $(this);
+            if ($input.data('dtp-init')) return;
+            $input.datetimepicker({
+                uiLibrary: 'bootstrap4',
+                format: 'dd.mm.yyyy HH:MM',
+                footer: true,
+                modal: true,
+                locale: 'en-us'
+            });
+            $input.data('dtp-init', true);
+        });
+    }
 })();

@@ -17,13 +17,16 @@
                 <p><strong>{% trans "Роль" %}:</strong> {{ profile.get_role_display }}</p>
                 {{ user_form.as_p }}
                 {{ profile_form.as_p }}
-                <button class="boxed-btn3 w-100" type="submit">{% trans "Сохранить" %}</button>
-            </form>
-            <div class="profile-links mt-4">
-                <a href="{% url 'tickets:my' %}">{% trans "Мои билеты" %}</a> ·
-                <a href="{% url 'orders:my' %}">{% trans "Мои заказы" %}</a> ·
-                <a href="{% url 'favorites:list' %}">{% trans "Избранное" %}</a>
-            </div>
+            <button class="boxed-btn3 w-100" type="submit">{% trans "Сохранить" %}</button>
+        </form>
+        <div class="profile-links mt-4">
+            {% if request.user.is_staff or request.user.is_superuser or profile.role == 'organizer' or profile.role == 'staff' %}
+                <a href="{% url 'events:my' %}">{% trans "Мои события" %}</a> ·
+            {% endif %}
+            <a href="{% url 'tickets:my' %}">{% trans "Мои билеты" %}</a> ·
+            <a href="{% url 'orders:my' %}">{% trans "Мои заказы" %}</a> ·
+            <a href="{% url 'favorites:list' %}">{% trans "Избранное" %}</a>
+        </div>
         </div>
     </div>
 </section>

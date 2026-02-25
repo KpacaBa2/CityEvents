@@ -11,6 +11,9 @@
         </div>
         <div class="jobs_conetent">
             <a href="{% url 'events:detail' slug=event.slug %}"><h4>{{ event.title }}</h4></a>
+            {% if show_status %}
+                <span class="status-pill status-{{ event.status }}">{{ event.get_status_display }}</span>
+            {% endif %}
             <div class="links_locat d-flex align-items-center">
                 <div class="location">
                     <p><i class="fa fa-map-marker"></i> {{ event.venue.city.name|default:'-' }}</p>

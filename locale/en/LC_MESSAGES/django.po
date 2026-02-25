@@ -1019,5 +1019,192 @@ msgstr "After registration, email confirmation is required. Check your inbox."
 msgid "Меню"
 msgstr "Menu"
 
+msgid "Вы получили это письмо потому, что был запрос на сброс пароля для вашего аккаунта CityEvents."
+msgstr "You are receiving this email because a password reset was requested for your CityEvents account."
+
+msgid "Перейдите по ссылке для сброса пароля:"
+msgstr "Follow the link to reset your password:"
+
+msgid "Если вы не запрашивали сброс, просто игнорируйте это письмо."
+msgstr "If you did not request a reset, just ignore this email."
+
+msgid "Сброс пароля — CityEvents"
+msgstr "Password reset — CityEvents"
+
+msgid "Главная / Восстановление пароля"
+msgstr "Home / Password reset"
+
+msgid "Главная / Новый пароль"
+msgstr "Home / New password"
+
+msgid "Введите email, который вы использовали при регистрации. Мы отправим ссылку для сброса пароля."
+msgstr "Enter the email you used during registration. We will send a password reset link."
+
+msgid "Шаг 1: Введите email"
+msgstr "Step 1: Enter your email"
+
+msgid "Шаг 2: Откройте письмо и перейдите по ссылке"
+msgstr "Step 2: Open the email and follow the link"
+
+msgid "Шаг 3: Задайте новый пароль"
+msgstr "Step 3: Set a new password"
+
+msgid "Вернуться к входу"
+msgstr "Back to login"
+
+msgid "Проверьте почту и следуйте инструкции для сброса пароля."
+msgstr "Check your email and follow the instructions to reset your password."
+
+msgid "Если письма нет, проверьте папку «Спам» или запросите письмо повторно."
+msgstr "If you don't see the email, check Spam or request it again."
+
+msgid "Запросить снова"
+msgstr "Request again"
+
+msgid "Придумайте новый пароль и подтвердите его ниже."
+msgstr "Create a new password and confirm it below."
+
+msgid "Ссылка недействительна или устарела. Запросите сброс заново."
+msgstr "The link is invalid or expired. Request a new reset."
+
+msgid "Теперь вы можете войти в аккаунт с новым паролем."
+msgstr "You can now log in with your new password."
+
+#: apps/events/templates/events/my_events.html:5
+msgid "Мои события — CityEvents"
+msgstr "My events — CityEvents"
+
+#: apps/events/templates/events/my_events.html:8 apps/users/templates/users/profile.html:24
+msgid "Мои события"
+msgstr "My events"
+
+#: apps/events/templates/events/my_events.html:9
+msgid "Главная / Мои события"
+msgstr "Home / My events"
+
+#: apps/events/templates/events/my_events.html:56
+msgid "Ваши события"
+msgstr "Your events"
+
+#: apps/events/templates/events/my_events.html:60
+msgid "Раздел доступен организаторам."
+msgstr "This section is available for organizers."
+
+#: apps/events/models.py
+msgid "Черновик"
+msgstr "Draft"
+
+#: apps/events/models.py
+msgid "Опубликовано"
+msgstr "Published"
+
+#: apps/events/models.py
+msgid "Отменено"
+msgstr "Cancelled"
+
+#: apps/events/models.py apps/categories/models.py apps/venues/models.py
+msgid "Название"
+msgstr "Name"
+
+#: apps/events/models.py apps/categories/models.py apps/venues/models.py
+msgid "Слаг"
+msgstr "Slug"
+
+#: apps/events/models.py
+msgid "Рекомендуемое"
+msgstr "Featured"
+
+#: apps/events/models.py
+msgid "Максимум участников"
+msgstr "Max attendees"
+
+#: apps/events/models.py apps/venues/models.py
+msgid "Обложка"
+msgstr "Cover"
+
+#: apps/events/models.py
+msgid "Примечание"
+msgstr "Note"
+
+#: apps/events/models.py
+msgid "Расписание"
+msgstr "Schedule"
+
+#: apps/events/models.py
+msgid "Расписания"
+msgstr "Schedules"
+
+#: apps/events/models.py apps/venues/models.py
+msgid "Изображение"
+msgstr "Image"
+
+#: apps/events/models.py apps/venues/models.py
+msgid "Подпись"
+msgstr "Caption"
+
+#: apps/events/models.py
+msgid "Фото события"
+msgstr "Event photo"
+
+#: apps/events/models.py
+msgid "Фото событий"
+msgstr "Event photos"
+
+#: apps/venues/models.py
+msgid "Ссылка на карту"
+msgstr "Map link"
+
+#: apps/venues/models.py
+msgid "Удобства"
+msgstr "Amenities"
+
+#: apps/venues/models.py
+msgid "Удобство"
+msgstr "Amenity"
+
+#: apps/venues/models.py
+msgid "Иконка"
+msgstr "Icon"
+
+#: apps/venues/models.py
+msgid "Фото площадки"
+msgstr "Venue photo"
+
+#: apps/venues/models.py
+msgid "Фото площадок"
+msgstr "Venue photos"
+
+#: apps/reviews/models.py apps/users/models.py
+msgid "Пользователь"
+msgstr "User"
+
+#: apps/reviews/models.py
+msgid "Оценка"
+msgstr "Rating"
+
+#: apps/reviews/models.py
+msgid "Комментарий"
+msgstr "Comment"
+
+#: apps/users/models.py
+msgid "О себе"
+msgstr "About me"
+
+#: apps/users/models.py
+msgid "Аватар"
+msgstr "Avatar"
+
+#: apps/users/models.py
+msgid "Профиль пользователя"
+msgstr "User profile"
+
+#: apps/users/models.py
+msgid "Профили пользователей"
+msgstr "User profiles"
+
+#: apps/users/models.py
+msgid "Сотрудник"
+msgstr "Staff"
+
 #~ msgid "Регистрация успешна. Добро пожаловать!"
 #~ msgstr "Registration successful. Welcome!"
